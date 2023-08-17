@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/core/my_theme/my_theme.dart';
 import 'package:islamic/modules/splash_screen/splash_screen.dart';
 
 import 'layout/home/home_screen.dart';
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashScreen.routeName,
+      theme: MyTheme.lightTheme,
+      initialRoute: HomeScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => SplashScreen(),
         HomeScreen.routeName: (context) => HomeScreen()
