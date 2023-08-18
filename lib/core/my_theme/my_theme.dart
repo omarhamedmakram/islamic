@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class MyTheme {
   static ThemeData lightTheme = ThemeData(
+      textTheme: TextTheme(
+          bodyMedium: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black)),
       scaffoldBackgroundColor: Colors.transparent,
       primaryColor: Color(0xFFB7935F),
       appBarTheme: AppBarTheme(
@@ -19,5 +22,5 @@ class MyTheme {
           showSelectedLabels: true,
           selectedItemColor: Colors.black,
           selectedLabelStyle:
-              TextStyle(fontWeight: FontWeight.bold, fontSize: 14)));
+          TextStyle(fontWeight: FontWeight.bold, fontSize: 14)));
 }
