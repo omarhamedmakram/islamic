@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../model/quran_model/quran_model.dart';
 
-class SuraDetails extends StatelessWidget {
+class SuraDetails extends StatefulWidget {
   static const String routeName = 'SuraDetails';
 
   const SuraDetails({super.key});
 
   @override
+  State<SuraDetails> createState() => _SuraDetailsState();
+}
+
+class _SuraDetailsState extends State<SuraDetails> {
+  List<String> vers = [];
+
+  @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as QuranModel;
     var theme = Theme.of(context);
+    if (vers.isEmpty) readFile(args.index);
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -50,10 +59,29 @@ class SuraDetails extends StatelessWidget {
                   endIndent: 40,
                   indent: 40,
                   thickness: 1,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => Text(
+                      '${vers[index]}  (${index + 1})',
+                      textAlign: TextAlign.center,
+                      textDirection: TextDirection.rtl,
+                      style: theme.textTheme.titleSmall,
+                    ),
+                    itemCount: vers.length,
+                  ),
                 )
               ],
             ),
           ),
         ));
+  }
+
+  void readFile(int index) async {
+    String read =
+        await rootBundle.loadString('assets/files/quran_fille/$index.txt');
+    List<String> text = read.trim().split('\n');
+    vers = text;
+    setState(() {});
   }
 }

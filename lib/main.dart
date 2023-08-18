@@ -6,13 +6,10 @@ import 'layout/home/home_screen.dart';
 import 'modules/quran_view/sura_details/sura_details.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
