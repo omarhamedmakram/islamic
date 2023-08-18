@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyTheme {
   static ThemeData lightTheme = ThemeData(
+      canvasColor: Color(0xFFB9AA91),
       textTheme: TextTheme(
           bodyMedium: TextStyle(
               fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black)),
