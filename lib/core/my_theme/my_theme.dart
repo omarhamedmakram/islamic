@@ -5,10 +5,18 @@ class MyTheme {
       canvasColor: Color(0xFFB9AA91),
       textTheme: TextTheme(
           bodyMedium: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black)),
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
+          titleLarge: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
+          titleMedium: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
+          bodyLarge: TextStyle(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+          titleSmall: TextStyle(fontSize: 20, color: Colors.black)),
       scaffoldBackgroundColor: Colors.transparent,
       primaryColor: Color(0xFFB7935F),
       appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.transparent,
           centerTitle: true,
           elevation: 0.0,
@@ -23,5 +31,5 @@ class MyTheme {
           showSelectedLabels: true,
           selectedItemColor: Colors.black,
           selectedLabelStyle:
-          TextStyle(fontWeight: FontWeight.bold, fontSize: 14)));
+              TextStyle(fontWeight: FontWeight.bold, fontSize: 14)));
 }
