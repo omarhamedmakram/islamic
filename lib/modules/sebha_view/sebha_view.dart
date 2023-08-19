@@ -23,6 +23,7 @@ class _SebhaViewState extends State<SebhaView> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
+      margin: EdgeInsetsDirectional.only(top: 20),
       child: Column(
         children: [
           Stack(
