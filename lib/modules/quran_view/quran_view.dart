@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/modules/quran_view/sura_details/sura_details.dart';
 
 import '../../model/quran_model/quran_model.dart';
@@ -124,6 +125,8 @@ class QuranView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var language = AppLocalizations.of(context);
+
     return Column(
       children: [
         Image.asset('assets/images/title_quran.png'),
@@ -131,7 +134,7 @@ class QuranView extends StatelessWidget {
           color: theme.primaryColor,
           thickness: 2,
         ),
-        Text('اسم  الصورة  ',
+        Text(language!.siraName,
             textAlign: TextAlign.center, style: theme.textTheme.bodyLarge),
         Divider(
           color: theme.primaryColor,

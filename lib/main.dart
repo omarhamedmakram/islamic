@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islamic/core/my_theme/my_theme.dart';
 import 'package:islamic/modules/settings/provider/settings_provider.dart';
 import 'package:islamic/modules/splash_screen/splash_screen.dart';
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: settingsProvider.currentTheme,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       theme: MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,
       routes: {
@@ -29,6 +31,17 @@ class MyApp extends StatelessWidget {
         SuraDetails.routeName: (context) => SuraDetails(),
         HadithDetails.routeName: (context) => HadithDetails()
       },
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: Locale(settingsProvider.lenguge),
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('ar'), // Spanish
+      ],
     );
   }
 }

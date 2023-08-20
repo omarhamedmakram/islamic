@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/modules/settings/provider/settings_provider.dart';
+import 'package:islamic/modules/settings/widget/languge_bottomsheet.dart';
 import 'package:islamic/modules/settings/widget/them_bottmsheet.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +15,8 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var settingsProvider = Provider.of<SettingProvider>(context);
+    var languge = AppLocalizations.of(context);
+
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Column(
@@ -22,7 +26,7 @@ class _SettingsState extends State<Settings> {
             height: 10,
           ),
           Text(
-            'Theme',
+            languge!.theme,
             style: theme.textTheme.bodyLarge,
           ),
           const SizedBox(
@@ -41,7 +45,7 @@ class _SettingsState extends State<Settings> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Dark',
+                    settingsProvider.isDark() ? languge!.dark : languge!.light,
                     style: theme.textTheme.titleLarge,
                   ),
                   Icon(Icons.check)
@@ -53,14 +57,16 @@ class _SettingsState extends State<Settings> {
             height: 20,
           ),
           Text(
-            'Languge',
+            languge!.languge,
             style: theme.textTheme.bodyLarge,
           ),
           const SizedBox(
             height: 20,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showLangugeBottomSheet();
+            },
             child: Container(
               padding: EdgeInsetsDirectional.all(14.0),
               decoration: BoxDecoration(
@@ -70,7 +76,9 @@ class _SettingsState extends State<Settings> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'English',
+                    settingsProvider.isEnglish()
+                        ? languge!.english
+                        : languge!.arabic,
                     style: theme.textTheme.titleLarge,
                   ),
                   Icon(Icons.check)
@@ -86,5 +94,10 @@ class _SettingsState extends State<Settings> {
   showThemeBottomSheet() {
     showModalBottomSheet(
         context: context, builder: (context) => ThemeBottomSheet());
+  }
+
+  showLangugeBottomSheet() {
+    showModalBottomSheet(
+        context: context, builder: (context) => LangugeBottomSheet());
   }
 }

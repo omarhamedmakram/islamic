@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/modules/settings/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,8 @@ class _SuraDetailsState extends State<SuraDetails> {
     var theme = Theme.of(context);
     var settingsProvider = Provider.of<SettingProvider>(context);
     if (vers.isEmpty) readFile(args.index);
+    var language = AppLocalizations.of(context);
+
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -34,7 +37,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Islamic'),
+            title: Text(language!.islamic),
           ),
           body: Container(
             margin: EdgeInsetsDirectional.only(

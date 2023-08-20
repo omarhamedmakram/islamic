@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/modules/settings/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class HadithDetails extends StatelessWidget {
     var args = ModalRoute.of(context)?.settings.arguments as HedathModel;
     var theme = Theme.of(context);
     var settingProvider = Provider.of<SettingProvider>(context);
+    var languge = AppLocalizations.of(context);
     return Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -27,7 +29,7 @@ class HadithDetails extends StatelessWidget {
                 fit: BoxFit.fill)),
         child: Scaffold(
             appBar: AppBar(
-              title: Text('Islamic'),
+              title: Text(languge!.islamic),
             ),
             body: Container(
               margin: EdgeInsetsDirectional.only(
