@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/modules/settings/provider/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../model/hadeth_model/hedeth_model.dart';
 
@@ -11,13 +13,16 @@ class HadithDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as HedathModel;
     var theme = Theme.of(context);
+    var settingProvider = Provider.of<SettingProvider>(context);
     return Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  'assets/images/background_light.png',
+                  settingProvider.currentTheme == ThemeMode.dark
+                      ? 'assets/images/background_dark.png'
+                      : 'assets/images/background_light.png',
                 ),
                 fit: BoxFit.fill)),
         child: Scaffold(
@@ -30,14 +35,15 @@ class HadithDetails extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color(0xFFF8F8F8)),
+                borderRadius: BorderRadius.circular(30),
+                color: theme.canvasColor,
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Text(
                       args.title,
-                      style: theme.textTheme.bodyMedium,
+                      style: theme.textTheme.titleLarge,
                     ),
                     Divider(
                       thickness: 1,

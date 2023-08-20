@@ -28,7 +28,7 @@ class _HedethViewState extends State<HedethView> {
         ),
         Text(
           'الاحاديث ',
-          style: theme.textTheme.titleLarge,
+          style: theme.textTheme.bodyLarge,
         ),
         Divider(
           thickness: 2,
@@ -45,7 +45,7 @@ class _HedethViewState extends State<HedethView> {
                     },
                     child: Text(
                       '${hedathmodel[index].title}',
-                      style: theme.textTheme.bodyLarge,
+                      style: theme.textTheme.titleMedium,
                       textAlign: TextAlign.center,
                     ),
                   ),

@@ -129,13 +129,13 @@ class QuranView extends StatelessWidget {
         Image.asset('assets/images/title_quran.png'),
         Divider(
           color: theme.primaryColor,
-          thickness: 3,
+          thickness: 2,
         ),
         Text('اسم  الصورة  ',
-            textAlign: TextAlign.center, style: theme.textTheme.titleLarge),
+            textAlign: TextAlign.center, style: theme.textTheme.bodyLarge),
         Divider(
           color: theme.primaryColor,
-          thickness: 3,
+          thickness: 2,
         ),
         Expanded(
           child: ListView.separated(
@@ -147,7 +147,7 @@ class QuranView extends StatelessWidget {
                     },
                     child: Text(
                       suraName[index],
-                      style: theme.textTheme.bodyMedium,
+                      style: theme.textTheme.titleMedium,
                       textAlign: TextAlign.center,
                     ),
                   ),

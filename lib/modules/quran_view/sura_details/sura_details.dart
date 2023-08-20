@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamic/modules/settings/provider/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../model/quran_model/quran_model.dart';
 
@@ -19,12 +21,15 @@ class _SuraDetailsState extends State<SuraDetails> {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as QuranModel;
     var theme = Theme.of(context);
+    var settingsProvider = Provider.of<SettingProvider>(context);
     if (vers.isEmpty) readFile(args.index);
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  'assets/images/background_light.png',
+                  settingsProvider.currentTheme == ThemeMode.dark
+                      ? 'assets/images/background_dark.png'
+                      : 'assets/images/background_light.png',
                 ),
                 fit: BoxFit.fill)),
         child: Scaffold(
@@ -38,7 +43,7 @@ class _SuraDetailsState extends State<SuraDetails> {
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Color(0xFFF8F8F8)),
+                color: theme.canvasColor),
             child: Column(
               children: [
                 Row(
@@ -46,7 +51,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                   children: [
                     Text(
                       args.text,
-                      style: theme.textTheme.bodyLarge,
+                      style: theme.textTheme.titleLarge,
                     ),
                     SizedBox(
                       width: 10,
@@ -58,7 +63,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                   color: theme.primaryColor,
                   endIndent: 40,
                   indent: 40,
-                  thickness: 1,
+                  thickness: 0.5,
                 ),
                 Expanded(
                   child: ListView.builder(
