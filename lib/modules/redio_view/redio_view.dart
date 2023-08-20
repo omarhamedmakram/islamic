@@ -23,7 +23,7 @@ class _RedioViewState extends State<RedioView> {
           ),
           Text(
             'اذاعة القرءان الكريم ',
-            style: theme.textTheme.bodyMedium,
+            style: theme.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
           SizedBox(

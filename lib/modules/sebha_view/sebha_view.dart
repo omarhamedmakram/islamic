@@ -18,18 +18,19 @@ class _SebhaViewState extends State<SebhaView> {
 
   @override
   Widget build(BuildContext context) {
-    print(Remembrance.length);
     var theme = Theme.of(context);
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      margin: EdgeInsetsDirectional.only(top: 20),
       child: Column(
         children: [
           Stack(
             alignment: Alignment.topCenter,
             children: [
-              Image.asset('assets/images/head of seb7a.png'),
+              Image.asset(
+                'assets/images/head of seb7a.png',
+                color: theme.primaryColor,
+              ),
               InkWell(
                 onTap: () {
                   truns += 0.3;
@@ -40,14 +41,18 @@ class _SebhaViewState extends State<SebhaView> {
                   margin: EdgeInsetsDirectional.only(top: 75, bottom: 30),
                   child: Transform.rotate(
                     angle: truns,
-                    child: Image.asset('assets/images/body of seb7a.png'),
+                    child: Image.asset(
+                      'assets/images/body of seb7a.png',
+                      color: theme.primaryColor,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          const Text(
+          Text(
             'عدد التسبيحات ',
+            style: theme.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
           Container(
@@ -57,12 +62,11 @@ class _SebhaViewState extends State<SebhaView> {
             height: 60,
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(20.0),
-              color: theme.canvasColor,
+              color: theme.primaryColorLight,
             ),
             child: Text(
               '$counterSebha',
-              style: TextStyle(),
-            ),
+                style: theme.textTheme.bodyMedium),
           ),
           ElevatedButton(
               onPressed: () {
